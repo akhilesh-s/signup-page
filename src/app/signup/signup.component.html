@@ -1,0 +1,163 @@
+<div class="row ">
+    <div class= "col-lg-7 custom-row jumbotron">
+      
+      <form novalidate 
+          (ngSubmit)="onFormSubmit(signupForm)" 
+          #signupForm="ngForm">
+          <fieldset>
+            <legend>SignUp</legend>
+              <hr>
+              <!-- First Name input block -->
+              <div class="form-group">
+                <label for="fname" class="col-lg-10
+                control-label">First Name</label>
+                <div class="col-lg-10">
+                    <input type="text" class = "form-control" 
+                      [ngModel] = "user.firstName" name="firstname"
+                      #firstname = "ngModel" id="fName" 
+                      placeholder="First Name"
+                      required>
+                 </div>
+                 
+  
+                 <!-- First Name error block -->
+  
+                  <div *ngIf="firstname.touched"
+                       class="col-sm-10 text-danger">
+                       <div *ngIf = "firstname.errors?.required">
+                        This field can't be blank
+                       </div>
+                   </div>
+              </div>
+
+              <!-- Last Name input block -->
+              <div class="form-group">
+                <label for="lname" class="col-lg-10
+                control-label">Last Name</label>
+                <div class="col-lg-10">
+                    <input type="text" class = "form-control" 
+                      [ngModel] = "user.lastName" name="lastname"
+                      #lastname = "ngModel" id="lName" 
+                      placeholder="Last Name"
+                      required>
+                 </div>
+
+  
+                 <!-- Last Name error block -->
+  
+                  <div *ngIf="lastname.touched"
+                       class="col-sm-10 text-danger">
+                       <div *ngIf = "lastname.errors?.required">
+                        This field can't be blank
+                       </div>
+                   </div>
+              </div>
+
+              <!-- Username block-->
+              <div class="form-group">
+                <label for="uname" class="col-lg-10
+                control-label">User Name</label>
+                <div class="col-lg-10">
+                    <input type="text" class = "form-control" 
+                      [ngModel] = "user.userName" name="username"
+                      #username = "ngModel" id="uName" 
+                      placeholder="User Name"
+                      required>
+                 </div>
+                 
+  
+                 <!-- Username error block -->
+  
+                  <div *ngIf="username.touched"
+                       class="col-sm-10 text-danger">
+                       <div *ngIf = "username.errors?.required">
+                        This field can't be blank
+                       </div>
+                   </div>
+              </div>
+                <!--birthdate-->
+              <div class="form-group">
+                  <label for="dob" class="col-lg-10 control-label">
+                        Birthdate
+                  </label>
+                  <div class="col-lg-10">
+                      <input type="date" class="form-control" [ngModel]="user.dob" name="birth" #birth="ngModel" id="dob" required>
+                  </div>
+              </div>
+                <!--birthdate error-->
+                <div *ngIf="birth.touched"
+                       class="col-sm-10 text-danger">
+                       <div *ngIf = "birth.errors?.required">
+                        This field can't be blank
+                       </div>
+                   </div>
+              
+              <!-- Password block -->
+              <div ngModelGroup="password" #userPassword="ngModelGroup" >
+                     <div class="form-group ">
+                        <label for="inputPassword" class="col-lg-10 	control-label">Password</label>
+                        <div class="col-lg-7">
+                            <input type="password" class="form-control"
+                          ngModel name="pwd"
+                          id="inputPassword" placeholder="Password"
+                          minlength ="8" required
+                         >
+                         </div>
+                     </div>
+                    
+                  <div class="form-group">
+                       <label for="confirmPassword" class="col-lg-10
+                control-label" >Confirm Password</label>
+                          <div class="col-lg-7">
+                            <input type="password" class="form-control"
+                          ngModel name="confirmPwd"
+                          id="confirmPassword" placeholder="Confirm Password">
+                     </div>
+                   </div>
+                 
+              <!-- Password error block -->
+                  <div *ngIf="(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)"
+                   class="col-sm-10 text-danger">
+                   
+                       <div *ngIf = "userPassword.invalid; else nomatch">
+                           Password needs to be more than 8 characters
+                       </div>
+                       <ng-template #nomatch >
+                           Passwords don't match
+                       </ng-template>
+               
+                   </div>
+              </div>				
+              
+              <br>
+              <!-- Select Gender block -->
+              <div class="form-group">
+                <label for="select" class="col-lg-10 control-label">Country</label>
+                 <div class="col-lg-7">
+                  <select id="select" class="form-control"
+                    [ngModel] = "user.country" name = "country"
+                    required>
+                    
+                    <option *ngFor = "let g of country"  
+                      [value] = "g"> {{g}} 
+                    </option>
+                  </select>
+                 </div>
+              </div>
+              
+             <!-- Buttons block -->
+              <div class="form-group ">
+                  <div class="col-lg-10 col-lg-offset-2">
+                      <button type="reset" class="btn btn-default cancel">Cancel</button>
+                      <button type="submit" class="btn btn-success submit" 
+                             [disabled]="!signupForm.form.valid"> Submit
+                      </button>
+                  </div>
+              </div>
+  
+  
+          </fieldset>
+      </form>
+      
+    </div>
+  </div>
