@@ -1,0 +1,22 @@
+.custom-row {
+    margin-left: 380px ;
+    padding: 10px;
+    text-align: left;	
+}
+legend{
+    font-size: 50px;
+    font-weight: lighter;
+}
+.control-label {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.cancel
+{
+    margin-left: 0em;
+}
+.submit
+{
+    margin-left: 100px;
+}
